@@ -1,0 +1,329 @@
+@import "fonts.less";
+@import "palette.less";
+html {
+  font-size: 100%;
+}
+
+body {
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 1.5;  
+  font-family: @bodyFont;  
+  border-top: .125em solid @color3;
+}
+
+header {
+  margin: 0 1em;
+  nav {
+    margin: 0 -1em 1em -1em;    
+    background-color: @color1tr1;
+    color: @color2;
+    position: relative;
+    section {
+      display: inline-block;
+    }    
+    section:first-child {
+      float: left;
+      padding: 1em;
+      p {
+        font-family: @headingFont;
+      }
+      p:last-child {
+        display: none;
+      }
+    }
+    section:last-child {
+      float: right;
+      > div {
+        display: table;
+        padding: 1em;
+        p, div {
+          display: table-cell;
+          vertical-align: middle;          
+          cursor: pointer;
+        }
+        p {
+          padding-right: .25em;
+          &:hover + div span {
+            background: @color3;
+          }
+        }
+        div {
+          &:hover span {
+            background: @color3;
+          }          
+        }
+        span {
+          width: 1.5em;
+          height: 2px;
+          display: block; 
+          background: @color2;
+          margin: .25em;          
+          transition: background .1s ease-in;
+          
+        }
+      }
+      
+      ul {
+        text-align: right;
+        background: @color2;
+        position: absolute;
+        left: 0;
+        right: 0;
+        width: 100%;
+        box-shadow: 0 .125em 1.25em 0 @color1tr2;
+        display: none;
+        li {
+          a {
+            display: block;
+            text-decoration: none;
+            color: @color1;
+            padding: .5em 1em;            
+          }
+          &:hover {
+            background: @color1tr2;
+          }
+          &:hover a {
+            color: @color2;
+          }
+        }        
+      }
+    }
+    &:after {
+      content: "";
+      display: table;
+      clear: both;
+    }
+  }
+  > section {
+    width: 100%;
+    margin-bottom: 1em;
+    min-height: 10em;
+    background: rgba(255, 0, 0, 0.13);
+    border: .125em solid @color1;
+    span {
+      display: block;
+      text-align: center;
+      padding-top: 1em;
+    }
+  }
+}
+
+main {
+  margin: 0 1em;
+  h1, h2 {
+    font-weight: bold;
+    font-size: 2em;    
+    font-family: @headingFont;
+  }
+  section {
+    margin-bottom: 2em;
+  }
+  > section:last-of-type {
+    section {
+      margin-bottom: 2em;
+      min-height: 10em;
+      background: rgba(255, 0, 0, 0.13);
+      border: .125em solid @color1;
+      span {
+        display: block;
+        text-align: center;
+        padding-top: 1em;
+      }
+    }    
+    section:first-child {
+      display: none;
+    }
+  }
+}
+
+footer {
+  background: @color1tr2;
+  color: white;
+  padding: 1.5em 1em;
+  section:first-child {
+    display: table;
+    width: 100%;
+    margin-bottom: 2em;
+    nav {
+      display: table-cell;
+      width: 50%;
+    }
+    section {
+      display: table-cell;
+      width: 50%;
+    }
+    li {
+      padding-bottom: 1em;
+    }
+    a {
+      color: @color2;
+      text-decoration: none;
+      position: relative;
+      &:after {
+        content: "";
+        position: absolute;
+        bottom: -3px;
+        left: 0;
+        width: 0;
+        height: 2px;
+        background: @color3;
+        transition: width .1s ease-in;
+      }
+      &:hover:after {
+        width: 100%;
+      }
+      i {
+        padding-right: .3em;
+      }
+    }
+  }
+}
+
+
+
+/*---------------------------------------------------
+-----------------MEDIA QUERIES-----------------------
+---------------------------------------------------*/
+
+/*--------TABLET--------*/
+@media (min-width: 35em) {   
+  header {
+    margin: 0 3em;
+    nav {
+      margin: 0 0 1em 0;
+      background: none;
+      color: @color1;
+      section:first-child, section:last-child {
+        clear: both;
+      }
+      section:first-child {
+        width: 100%;
+        padding: 1em 0;
+        vertical-align: middle;
+        p:first-child {
+          float: left;
+        }
+        p:last-child {
+          float: right;
+          display: block;
+          a {
+            display: inline-block;
+            font-family: @bodyFont;
+            padding: .4em .8em;
+            text-decoration: none;
+            background: @color3tr1;
+            color: @color2;
+            border-bottom: @color1 solid .125em;
+          }
+        }
+      }
+      section:last-child {
+        float: none;
+        > div {
+          display: none;
+        }
+        ul {
+          display: block;
+          position: relative;
+          text-align: left;
+          left: 0;
+          li {
+            float: left;            
+            background: @color1tr2;
+            border-bottom: .125em solid transparent;
+            transition: border .1s ease-in;
+            &:hover {
+              border-bottom: .125em solid @color3;
+            }
+            a {
+              color: @color2;
+              padding: .6em 1.2em;
+            }
+          }
+          li:last-child {
+            display: none;
+          }
+        }
+      }
+    }
+    
+    > section {
+      
+    }
+  }
+  
+  main {
+    margin: 0 3em;
+    > section:last-of-type {
+      section {
+        width: 48%;        
+      }
+      section:nth-child(2) {
+        float: left;
+      }
+      section:last-child {
+        float: right;
+      }
+      &:after {
+        content: "";
+        display: table;
+        clear: both;
+      }
+    }
+  }
+  
+  footer {
+    padding: 1.5em 3em;
+  }
+}
+
+/*--------TABLET--------*/
+@media (min-width: 64em) {
+  body {
+    background: #ddd;
+  }
+  
+  header {
+    max-width: 60em;
+    margin: 0 auto;
+    > section:first-of-type {
+      display: none;
+    }
+  }
+  
+  main {
+    max-width: 60em;
+    margin: 2em auto;
+    > section:first-of-type {
+      float: left;
+      width: 60%;
+    }
+    > section:last-of-type {
+      float: right;
+      width: 35%;
+      margin-top: 1em;
+      section:first-child {
+        display: block;
+        width: 100%;
+      }
+      section:nth-child(2), section:last-child {
+        width: 100%;
+        clear: both;
+      }
+    }
+    &:after {
+        content: "";
+        display: table;
+        clear: both;
+      }
+  }
+  
+  footer {
+    padding: 1.5em 0;
+    section {
+      max-width: 60em;
+      margin: auto;
+    }
+  }
+}
